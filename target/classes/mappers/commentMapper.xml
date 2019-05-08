@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "comment">
+	<!-- 댓글 작성 -->
+	<insert id="comment_Write" parameterType="commentDTO">
+		INSERT INTO
+			comment (boardIDX, memberID, commentContent, regDate)
+		VALUES
+			(#{boardIDX}, #{memberID}, #{commentContent}, now())
+	</insert>
+	<!-- 댓글 리스트 -->
+	<select id="comment_List" resultType="commentDTO">
+		SELECT
+			commentIDX, boardIDX, memberID, commentContent, DATE_FORMAT(regDate, '%y-%m-%d %H:%i') AS regDate, ref, depth
+		  FROM
+		  	comment
+		 WHERE
+		 	boardIDX = #{boardIDX} AND commentIDX &gt; 0
+		 ORDER BY commentIDX DESC
+	</select>
+	<!-- 댓글 삭제 -->
+	<delete id="comment_Delete" parameterType="hashmap">
+		DELETE FROM
+			comment
+		WHERE
+			<if test="type == 'single'">
+				commentIDX = #{commentIDX}
+			</if>
+			<if test="type == 'multi'">
+				boardIDX = #{boardIDX}
+			</if>
+	</delete>
+</mapper>

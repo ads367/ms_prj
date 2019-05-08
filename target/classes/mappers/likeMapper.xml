@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "boardLike">
+	<!-- 좋아요 중복체크 -->
+	<select id="like_Check" parameterType="likeDTO" resultType="int">
+		SELECT
+			count(*)
+		  FROM
+		  	boardLike
+		 WHERE
+		 	memberID = #{memberID} AND boardIDX = #{boardIDX}
+	</select>
+	<!-- 좋아요 추가 -->
+		<insert id="like_Up" parameterType="likeDTO">
+			INSERT INTO
+				boardLike (boardIDX, memberID)
+			VALUES
+				(#{boardIDX}, #{memberID})
+		</insert>
+	<!-- 좋아요 제거 -->
+		<delete id="like_Delete" parameterType="likeDTO">
+			DELETE FROM
+				boardLike
+			 WHERE
+			 	boardIDX = #{boardIDX} and memberID = #{memberID}
+		</delete>
+</mapper>
