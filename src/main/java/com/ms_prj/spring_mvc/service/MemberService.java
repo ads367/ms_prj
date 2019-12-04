@@ -96,7 +96,7 @@ public class MemberService {
 		String charSet = "UTF-8";
 		String hostSMTP = "smtp.naver.com";
 		String hostSMTPid = "ads367";
-		String hostSMTPpwd = "비밀번호입력";
+		String hostSMTPpwd = "비밀번호 입력";
 		
 		// 보내는 사람 메일 및 내용
 		String fromEmail = "ads367@naver.com";

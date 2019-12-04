@@ -151,7 +151,7 @@
 			$('#keyword').focus();
 			return false;
 		}
-		var url = "/board/boardList?page=1"
+		var url = "/board/boardListPage?page=1"
 				+ "&perPageNum=" + "${pageMaker.cri.perPageNum}"
 				+ "&searchOption=" + OptionVal
 				+ "&keyword=" + encodeURIComponent(keywordVal);

@@ -45,7 +45,8 @@ public class MemberController {
 	@RequestMapping(value="/joinAction", method=RequestMethod.POST)
 	public String join_Action(@ModelAttribute MemberDTO memberDTO) throws Exception {
 		service.member_Join(memberDTO);
-		return "redirect:/";
+		String returnURL = "/";
+		return "redirect:"+returnURL;
 	}
 	// 로그인 페이지로 이동
 	@RequestMapping(value="/login_Page", method=RequestMethod.GET)
@@ -60,13 +61,15 @@ public class MemberController {
 		session.setAttribute("sessionMemberID", memberDTO.getMemberID());
 		session.setAttribute("memberName", memberDTO.getMemberName());
 		session.setAttribute("memberIDX", memberDTO.getMemberIDX());
-		return "redirect:/";
+		String returnURL = "/";
+		return "redirect:"+returnURL;
 	}
 	// 로그아웃
 	@RequestMapping(value="/logoutAction", method=RequestMethod.GET)
 	public String logout_Action(HttpSession session) throws Exception {
 		session.invalidate();
-		return "redirect:/";
+		String returnURL = "/";
+		return "redirect:"+returnURL;
 	}
 	// 회원정보 페이지로 이동
 	@RequestMapping(value="/Info_Page", method=RequestMethod.GET)
@@ -127,8 +130,8 @@ public class MemberController {
 	public String memberInfo_UpdateAction(@ModelAttribute MemberDTO memberDTO, HttpSession session) throws Exception {
 		service.member_Update(memberDTO);
 		String sessionID = (String) session.getAttribute("sessionMemberID");
-		String url = "/member/Info_Page?memberID=";
-		return "redirect:" + url + sessionID;
+		String returnURL = "/member/Info_Page?memberID=";
+		return "redirect:" + returnURL + sessionID;
 	}
 	// 비밀번호 찾기 페이지로 이동
 	@RequestMapping(value="/passwordSearch_View", method=RequestMethod.GET)

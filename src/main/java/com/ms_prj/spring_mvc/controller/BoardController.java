@@ -1,4 +1,4 @@
-package com.ms_prj.spring_mvc.controller;
+ package com.ms_prj.spring_mvc.controller;
 
 import java.io.PrintWriter;
 import java.util.Map;
@@ -71,7 +71,8 @@ public class BoardController {
 		String sessionID = (String) session.getAttribute("sessionMemberID");
 		boardDTO.setMemberID(sessionID);
 		service.board_Write(boardDTO);
-		return "redirect:/board/boardList";
+		String returnURL = "/board/boardList";
+		return "redirect:"+returnURL;
 	}
 	// 작성 글 보기
 	@RequestMapping(value="/boardRead", method=RequestMethod.GET)
@@ -134,7 +135,8 @@ public class BoardController {
 		map.put("type", type);
 		service.board_Delete(map);
 		commentservice.comment_Delete(map);
-		return "redirect:/board/boardList";
+		String returnURL = "/board/boardList";
+		return "redirect:"+returnURL;
 	}
 
 }

@@ -74,7 +74,7 @@
 					<!-- <a href="http://naver.com">
 						<i class="fab fa-linkedin-in"></i>
 					</a> -->
-					<a href="#">
+					<a href="https://github.com/ads367/ms_prj">
 						<i class="fab fa-github"></i>
 					</a>
 					<!-- <a href="#">
